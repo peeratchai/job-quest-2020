@@ -1,0 +1,28 @@
+{
+    "joke": [
+        {
+            "id": 1,
+            "value" : "Joke 1"
+        },
+        {
+            "id": 2,
+            "value" : "Joke 2"
+        },
+        {
+            "id": 3,
+            "value" : "Joke 3"
+        },
+        {
+            "id": 4,
+            "value" : "Joke 4"
+        },
+        {
+            "id": 5,
+            "value" : "Joke 5"
+        },
+        {
+            "id": 6,
+            "value" : "Joke 6"
+        }
+    ]
+}
