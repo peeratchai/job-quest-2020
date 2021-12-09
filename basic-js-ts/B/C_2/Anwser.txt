@@ -1,0 +1,48 @@
+2. จะใช้วิธีใดในการทำ Authentication
+
+    -> ใช้ Email หรือ เบอร์โทร เป็น Key ในการยืนยันตัวตน และให้ทำการ Register พร้อมกับ Password 
+
+3. ต้องมี REST API Endpoint และ Method อะไรบ้าง (ไม่นับส่วนของการ Login / Register) 
+ในกรณีที่ Endpoint ไหนมีการส่ง Body ต้องระบุ Body มาด้วยว่าต้องมีอะไรบ้าง (ไม่จำเป็นต้องละเอียด ในกรณีที่ field เยอะมากๆ) 
+น API สำหรับการ Submit ส่งใบสมัคร ควรทำอะไรบ้างในขั้นตอนดังกล่าว สามารถเขียนเป็น Pseudo Code ได้
+
+    -> 
+    Endpoint
+    POST(/registration)
+
+        BODY : {
+            "First Name": "",
+            "Last Name": "",
+            "Title":"",
+            .... Personal Data,
+            "Draft": 0 ( 0 = Submit แล้ว , 1 = Draft อยู่)
+            "Avarta": "URI" (ต้องทำการ Post /uplaod_image มาก่อนเพื่อให้ได้ URI กลับมาใช้ส่งในแบบฟอร์ม)
+        }
+
+    GET(/registration/:userId)
+
+    PATCH(/registration) สำหรับการ Draft
+
+        BODY : {
+            "First Name": "",
+            "Last Name": "",
+            "Title":"",
+            .... Personal Data,
+            "Draft": 0 ( 0 = Submit แล้ว , 1 = Draft อยู่)
+            "Avarta": "URI" (ต้องทำการ Post /uplaod_image มาก่อนเพื่อให้ได้ URI กลับมาใช้ส่งในแบบฟอร์ม)
+        }
+
+    POST(/upload_image) return URI
+
+        BODY : formData สำหรับไฟล์รูปภาพ
+
+    GET(/image/:registrationId)
+    Get(/shirt_stock) return [ "XS","S","M" ]
+
+    Method
+    SaveImage() บันทึกไฟล์รูปไว้ที่ Server ใน Folder /upload/image/..... แล้ว return uri path กลับไปให้ UI ใช้งาน
+    ValidateForm() ตรวจสอบความถูกต้องของข้อมูล เช่น เสื้อผ้ายังเหลือ Size ที่ต้องการอยุ่หรือไม่ และข้อมูลครบถ้วนหรือไม่ เมื่อกด Submit ฟอร์ม 
+    CheckShirtStock() ตรวจสอบเสื้อผ้าที่เหลืออยุ่ ว่ามี Size ไหนบ้าง
+
+    
+    
